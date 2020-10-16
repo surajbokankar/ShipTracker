@@ -20,6 +20,7 @@ import com.suraj.tracker.databinding.FragmentGalleryBinding
 import com.suraj.tracker.ui.adapter.GalleryAdapter
 import com.suraj.tracker.ui.fragment.model.ImageModel
 import com.suraj.tracker.util.Utils
+import com.suraj.tracker.util.Utils.requestStoragePermission
 import kotlinx.android.synthetic.main.fragment_gallery.*
 import java.io.IOException
 
@@ -59,7 +60,7 @@ class GalleryFragment : BaseFragment<FragmentGalleryBinding>(), View.OnClickList
                     startActivityForResult(Intent.createChooser(this, "Select Image"), GALLERY_INT)
                 }
             } else {
-                verifyStoragePermissions()
+               requestStoragePermission(requireActivity())
             }
 
         } catch (e: Exception) {
@@ -122,21 +123,6 @@ class GalleryFragment : BaseFragment<FragmentGalleryBinding>(), View.OnClickList
     private fun setAdapter() {
         mAdapter = GalleryAdapter(requireContext(), images)
         list_image_view.adapter = mAdapter
-    }
-
-    fun verifyStoragePermissions() {
-        val permission = ActivityCompat.checkSelfPermission(
-            requireActivity(),
-            Manifest.permission.WRITE_EXTERNAL_STORAGE
-        )
-        if (permission != PackageManager.PERMISSION_GRANTED) {
-            // We don't have permission so prompt the user
-            ActivityCompat.requestPermissions(
-                requireActivity(),
-                PERMISSIONS_STORAGE,
-                REQUEST_EXTERNAL_STORAGE
-            )
-        }
     }
 
 }
