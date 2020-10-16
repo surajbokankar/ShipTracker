@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        >
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dim_38dp"
+            android:text="@string/load"
+            android:id="@+id/load_images"
+            android:background="@drawable/button_back"
+            android:textColor="@color/white"
+            android:fontFamily="@font/roboto_bold"
+            android:layout_marginRight="@dimen/dim_42dp"
+            android:layout_marginLeft="@dimen/dim_42dp"
+            android:layout_marginTop="@dimen/dim_16dp"
+            android:layout_marginBottom="@dimen/dim_16dp"
+            />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/imageView"
+            />
+
+
+        <com.suraj.tracker.ui.common.CustomRecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/list_image_view"
+            android:layout_margin="@dimen/dim_10dp"
+            app:listOrientation="grid"
+            app:addItemDecorator="false"
+            app:num="two"
+            />
+
+    </LinearLayout>
+</layout>
+

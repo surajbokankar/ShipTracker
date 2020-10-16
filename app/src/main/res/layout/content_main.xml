@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+<!--    <com.github.gcacace.signaturepad.views.SignaturePad-->
+<!--        android:id="@+id/signature_pad"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent"-->
+<!--        app:penColor="@android:color/black"-->
+<!--        app:layout_constraintTop_toTopOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="@id/bottom_view"-->
+<!--        android:layout_marginBottom="@dimen/dim_48"-->
+<!--        />-->
+    <com.williamww.silkysignature.views.SignaturePad
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/signature_pad"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:penColor="@android:color/black"
+        />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dim_48"
+        android:id="@+id/bottom_view"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:orientation="horizontal"
+        android:layout_marginBottom="@dimen/dim_8dp"
+        >
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/clear"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="@dimen/fab_margin"
+            android:layout_weight="1"
+            android:fontFamily="@font/roboto"
+            android:text="@string/clear"
+            android:layout_marginLeft="@dimen/dim_16dp"
+            android:background="@drawable/clear_view"
+            android:textColor="@color/color_FD4D60"
+            />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/save"
+            android:layout_weight="1"
+            android:layout_marginRight="@dimen/fab_margin"
+            android:id="@+id/save"
+            android:background="@drawable/button_back"
+            android:textColor="@color/white"
+            android:fontFamily="@font/roboto_bold"
+            />
+
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

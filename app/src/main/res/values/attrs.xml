@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <declare-styleable name="CustomRecyclerView">
+        <attr name="listOrientation" format="integer">
+            <enum name="vertical" value="1" />
+            <enum name="horizontal" value="2" />
+            <enum name="grid" value="3" />
+        </attr>
+        <attr name="addItemDecorator" format="boolean" />
+        <attr name="applyAnimation" format="boolean" />
+        <attr name="num" format="integer">
+            <enum name="two" value="2" />
+            <enum name="three" value="3" />
+            <enum name="four" value="4" />
+        </attr>
+    </declare-styleable>
+
+</resources>

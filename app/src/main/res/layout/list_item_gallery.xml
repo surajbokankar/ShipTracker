@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data>
+        <variable
+            name="item"
+            type="com.suraj.tracker.ui.fragment.model.ImageModel"/>
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:weightSum="2"
+        >
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginRight="@dimen/dim_12dp"
+            android:layout_marginLeft="@dimen/dim_12dp"
+            android:layout_marginBottom="@dimen/dim_16dp"
+            app:cardCornerRadius="@dimen/dim_4dp"
+            app:cardElevation="@dimen/dim_4dp"
+            android:layout_weight="1"
+            >
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dim_160dp"
+                itemView="@{item.image}"
+                />
+
+        </androidx.cardview.widget.CardView>
+
+    </LinearLayout>
+
+
+</layout>
+
