@@ -9,6 +9,7 @@ import android.net.Uri
 import android.os.Environment
 import android.widget.Toast
 import com.suraj.tracker.util.Utils
+import com.suraj.tracker.util.Utils.showToast
 import com.williamww.silkysignature.views.SignaturePad
 import java.io.*
 
@@ -18,15 +19,14 @@ object StorageRepository {
     fun onSignatureSave(mSignaturePad:SignaturePad,context: Context) {
         val signatureBitmap = mSignaturePad!!.signatureBitmap
         if (addJpgSignatureToGallery(signatureBitmap,context)) {
-            Utils.showToast(context,"Signature saved into the Gallery")
+            showToast(context,"Signature saved into the Gallery")
         } else {
-            Utils.showToast(context,"Unable to store the signature")
+            showToast(context,"Unable to store the signature")
         }
         if (addSvgSignatureToGallery(mSignaturePad!!.signatureSvg,context)) {
-            Utils.showToast(context,"SVG Signature saved into the Gallery")
+            showToast(context,"SVG Signature saved into the Gallery")
         } else {
-
-            Utils.showToast(context,"Unable to store the SVG signature")
+            showToast(context,"Unable to store the SVG signature")
         }
     }
 

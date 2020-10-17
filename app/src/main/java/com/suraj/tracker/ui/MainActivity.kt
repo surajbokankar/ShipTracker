@@ -1,33 +1,19 @@
 package com.suraj.tracker.ui
 
-import android.Manifest
-import android.app.Activity
-import android.content.Intent
 import android.content.pm.PackageManager
-import android.graphics.Bitmap
-import android.graphics.Canvas
-import android.graphics.Color
-import android.net.Uri
 import android.os.Bundle
-import android.os.Environment
-import com.google.android.material.floatingactionbutton.FloatingActionButton
-import com.google.android.material.snackbar.Snackbar
-import androidx.appcompat.app.AppCompatActivity
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
-import android.widget.Toast
-import androidx.core.app.ActivityCompat
-import com.bumptech.glide.util.Util
-import com.github.gcacace.signaturepad.views.SignaturePad
+import androidx.appcompat.app.AppCompatActivity
 import com.suraj.tracker.R
 import com.suraj.tracker.ui.StorageRepository.onSignatureSave
 import com.suraj.tracker.ui.fragment.GalleryFragment
 import com.suraj.tracker.util.CommonHolder
 import com.suraj.tracker.util.Utils
+import com.suraj.tracker.util.Utils.showToast
 import kotlinx.android.synthetic.main.content_main.*
 import kotlinx.android.synthetic.main.layout_tool_bar.*
-import java.io.*
 
 class MainActivity : AppCompatActivity(), View.OnClickListener {
 
@@ -111,11 +97,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
                 if (grantResults.size <= 0
                     || grantResults[0] != PackageManager.PERMISSION_GRANTED
                 ) {
-                    Toast.makeText(
-                        this,
-                        "Cannot write images to external storage",
-                        Toast.LENGTH_SHORT
-                    ).show()
+                    showToast(this,"Cannot write images to external storage")
                 }
             }
         }

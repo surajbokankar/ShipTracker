@@ -4,16 +4,10 @@ import android.Manifest
 import android.app.Activity
 import android.content.ClipData
 import android.content.Intent
-import android.content.pm.PackageManager
-import android.database.Cursor
 import android.graphics.Bitmap
 import android.net.Uri
 import android.provider.MediaStore
 import android.view.View
-import android.widget.Toast
-import androidx.core.app.ActivityCompat
-import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.suraj.fitstif.base.BaseFragment
 import com.suraj.tracker.R
 import com.suraj.tracker.databinding.FragmentGalleryBinding
@@ -21,17 +15,15 @@ import com.suraj.tracker.ui.adapter.GalleryAdapter
 import com.suraj.tracker.ui.fragment.model.ImageModel
 import com.suraj.tracker.util.Utils
 import com.suraj.tracker.util.Utils.requestStoragePermission
+import com.suraj.tracker.util.Utils.showToast
+import com.suraj.tracker.util.Utils.verifyStoragePermissions
 import kotlinx.android.synthetic.main.fragment_gallery.*
-import java.io.IOException
 
 
 class GalleryFragment : BaseFragment<FragmentGalleryBinding>(), View.OnClickListener {
     private val GALLERY_INT = 1
     lateinit var images: ArrayList<ImageModel>
     lateinit var mAdapter: GalleryAdapter
-    private val REQUEST_EXTERNAL_STORAGE = 1
-    private val PERMISSIONS_STORAGE =
-        arrayOf<String>(Manifest.permission.WRITE_EXTERNAL_STORAGE)
 
     override fun getLayoutResId(): Int {
         return R.layout.fragment_gallery
@@ -48,7 +40,7 @@ class GalleryFragment : BaseFragment<FragmentGalleryBinding>(), View.OnClickList
     fun onLoadImage() {
         val galleryIntent = Intent()
         try {
-            if (Utils.verifyStoragePermissions(
+            if (verifyStoragePermissions(
                     requireActivity(),
                     Manifest.permission.WRITE_EXTERNAL_STORAGE
                 )
@@ -112,11 +104,11 @@ class GalleryFragment : BaseFragment<FragmentGalleryBinding>(), View.OnClickList
                 }
                 setAdapter()
             } else {
-                Utils.showToast(requireContext(), "You haven't picked Image")
+                showToast(requireContext(), "You haven't picked Image")
             }
         } catch (e: Exception) {
             e.printStackTrace()
-            Utils.showToast(requireContext(), "Something Went Wrong")
+            showToast(requireContext(), "Something Went Wrong")
         }
     }
 

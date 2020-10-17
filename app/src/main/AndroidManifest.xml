@@ -32,7 +32,6 @@
             </intent-filter>
         </activity>
         <activity android:name=".util.CommonHolderActivity"/>
-        <activity android:name=".ui.GalleryActivity"/>
 
         <meta-data
             android:name="preloaded_fonts"

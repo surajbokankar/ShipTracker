@@ -4,7 +4,6 @@ import android.app.Application
 import android.content.Context
 import android.graphics.Typeface
 import androidx.core.content.res.ResourcesCompat
-import com.manojbhadane.holdy.Holdy
 import com.suraj.tracker.util.CommonHolder
 
 class App :Application() {

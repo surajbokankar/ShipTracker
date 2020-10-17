@@ -12,16 +12,12 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
-
-import com.manojbhadane.holdy.Holdy;
-import com.manojbhadane.holdy.R.id;
 import com.suraj.tracker.R;
 
 public class CommonHolderActivity extends AppCompatActivity {
@@ -47,7 +43,7 @@ public class CommonHolderActivity extends AppCompatActivity {
             this.getWindow().setSoftInputMode(softInputMode);
         }
 
-        this.toolBar = (Toolbar)this.findViewById(id.toolBar);
+        this.toolBar = (Toolbar)this.findViewById(R.id.toolBar);
         if (screenOrientation != -1) {
             this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_UNSPECIFIED);
         }
@@ -74,7 +70,7 @@ public class CommonHolderActivity extends AppCompatActivity {
             Fragment fragment = (Fragment) Class.forName(className).newInstance();
             fragment.setArguments(bundle);
             FragmentTransaction transaction = manager.beginTransaction();
-            transaction.replace(id.layContainer, fragment);
+            transaction.replace(R.id.layContainer, fragment);
             transaction.commit();
         } catch (ClassNotFoundException var6) {
             var6.printStackTrace();
@@ -108,8 +104,8 @@ public class CommonHolderActivity extends AppCompatActivity {
             if (view instanceof TextView) {
                 TextView tv = (TextView)view;
                 if (tv.getText().equals(toolbar.getTitle())) {
-                    if (Holdy.sTypeface != null) {
-                        tv.setTypeface(Holdy.sTypeface);
+                    if (CommonHolder.sTypeface != null) {
+                        tv.setTypeface(CommonHolder.sTypeface);
                     } else {
                         Log.e("Holdy", "Typeface: typeface is null");
                     }
