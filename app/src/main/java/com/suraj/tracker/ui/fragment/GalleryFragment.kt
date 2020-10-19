@@ -4,7 +4,6 @@ import android.Manifest
 import android.app.Activity
 import android.content.ClipData
 import android.content.Intent
-import android.graphics.Bitmap
 import android.net.Uri
 import android.provider.MediaStore
 import android.view.View
@@ -13,7 +12,6 @@ import com.suraj.tracker.R
 import com.suraj.tracker.databinding.FragmentGalleryBinding
 import com.suraj.tracker.ui.adapter.GalleryAdapter
 import com.suraj.tracker.ui.fragment.model.ImageModel
-import com.suraj.tracker.util.Utils
 import com.suraj.tracker.util.Utils.requestStoragePermission
 import com.suraj.tracker.util.Utils.showToast
 import com.suraj.tracker.util.Utils.verifyStoragePermissions
@@ -75,30 +73,15 @@ class GalleryFragment : BaseFragment<FragmentGalleryBinding>(), View.OnClickList
             ) {
                 images = ArrayList<ImageModel>()
                 if (data?.data != null) {
-                    val result = data
                     val mImageUri: Uri = data?.data!!
-                    var compressedImageBitmap: Bitmap? = null
-                    val model = ImageModel()
-                    compressedImageBitmap = MediaStore.Images.Media.getBitmap(
-                        requireActivity().getContentResolver(),
-                        mImageUri
-                    );
-                    model.image = compressedImageBitmap
-                    images.add(model)
+                    storeBitMap(mImageUri)
                 } else {
                     if (data?.getClipData() != null) {
                         val mClipData: ClipData = data?.getClipData()!!
                         for (i in 0 until mClipData.itemCount) {
-                            val model = ImageModel()
                             val item = mClipData.getItemAt(i)
                             val uri: Uri = item.uri
-                            var compressedImageBitmap: Bitmap? = null
-                            compressedImageBitmap = MediaStore.Images.Media.getBitmap(
-                                requireActivity().getContentResolver(),
-                                uri
-                            );
-                            model.image = compressedImageBitmap
-                            images.add(model)
+                            storeBitMap(uri)
                         }
                     }
                 }
@@ -110,6 +93,15 @@ class GalleryFragment : BaseFragment<FragmentGalleryBinding>(), View.OnClickList
             e.printStackTrace()
             showToast(requireContext(), "Something Went Wrong")
         }
+    }
+    private fun storeBitMap(uri: Uri){
+        val bitmap= MediaStore.Images.Media.getBitmap(
+            requireActivity().getContentResolver(),
+            uri
+        )
+        val model = ImageModel()
+        model.image=bitmap
+        images.add(model)
     }
 
     private fun setAdapter() {

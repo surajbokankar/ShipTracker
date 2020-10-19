@@ -16,8 +16,6 @@ import kotlinx.android.synthetic.main.content_main.*
 import kotlinx.android.synthetic.main.layout_tool_bar.*
 
 class MainActivity : AppCompatActivity(), View.OnClickListener {
-
-
     private var mSignaturePad: com.williamww.silkysignature.views.SignaturePad? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
